@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import React, { Dispatch, SetStateAction } from 'react'
 
 type ChackBoxProps = {
@@ -9,12 +9,16 @@ type ChackBoxProps = {
 
 const ChackBox: React.FC<ChackBoxProps> = ({state, toggle, lable}) => {
   return (
-    <FormControlLabel
-      control={
-        <Checkbox checked={state} onChange={(e) => toggle(e.target.checked)} color="success" name={lable} />
-      }
-      label={lable}
-    />
+    <>
+      <FormControlLabel
+        sx={{ display: "flex", justifyContent: "space-between"}}
+        control={
+          <Checkbox checked={state} onChange={(e) => toggle(e.target.checked)} color="success" name={lable} />
+        }
+        label={<Typography variant="h5">{lable}</Typography>}
+      />
+      
+    </>
   )
 }
 

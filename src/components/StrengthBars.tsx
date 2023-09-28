@@ -8,19 +8,19 @@ const StrengthBars: React.FC<StrengthRatingProps> = ({strength}) => {
     let colors: string[] = []
     switch (strength) {
         case "TOO WEAK!":
-            colors = ["red","","",""]
+            colors = ["red","gray","gray","gray"]
             break;
         case "WEAK":
-            colors = ["orange","orange","",""]
+            colors = ["orange","orange","gray","gray"]
             break;
         case "MEDIUM":
-            colors = ["yellow","yellow","yellow",""]
+            colors = ["yellow","yellow","yellow","gray"]
             break;
         case "STRONG":
             colors=["green","green","green","green"]
             break;
         default:
-            colors = ["","","",""]
+            colors = ["gray","gray","gray","gray"]
             break;
     }
 

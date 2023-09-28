@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
 type SliderLengthProps = {
   setLength: React.Dispatch<React.SetStateAction<number>>
 }
+
 
 const SliderLength: React.FC<SliderLengthProps> = ({setLength}) =>  {
 
@@ -13,8 +13,12 @@ const SliderLength: React.FC<SliderLengthProps> = ({setLength}) =>  {
   };
   
   return (
-    <Box sx={{ width: 300 }}>
+    
+      
       <Slider
+        sx={{width: "70%", height: "6px"}}
+        
+        
         aria-label="Password Length"
         defaultValue={8}
         step={1}
@@ -23,7 +27,7 @@ const SliderLength: React.FC<SliderLengthProps> = ({setLength}) =>  {
         max={10}
         onChange={handleSliderChange}
       />
-    </Box>
+    
   );
 }
 export default SliderLength

@@ -1,13 +1,13 @@
 import { useState, SetStateAction, Dispatch } from 'react'
-import './App.css'
+
+import { Box, Button, FormGroup, Typography } from '@mui/material'
+
 import StrengthBars from './components/StrengthBars'
-
-import { Box, Button, FormGroup } from '@mui/material'
-
 import ChackBox from './components/ChackBox'
-
-import CopyButton from './components/CopyButton'
 import SliderLength from './components/SliderLength'
+import MainWrapper from './components/MainWrapper'
+import Container from './components/Container'
+import PasswordField from './components/PasswordField'
 
 function App() {
 
@@ -24,68 +24,50 @@ function App() {
     const [strength, setStrength] = useState<string>("")
 
     // state for copy button
-    const [copy, setCopy] = useState<boolean>(false)
-
-    // password generate function
-    
-    
-    
-    
-    
-    
+    const [copy, setCopy] = useState<boolean>(false)    
 
     return (
-        <>
-            
-            <div style={{display: 'flex'}}>
-                <input 
-                    readOnly
-                    type="text"
-                    value={password}
-                />
-                <CopyButton copied={copy} setCopied={setCopy} password={password}/>
-            </div>
+        <MainWrapper>
+            <Container>
+                <PasswordField copied={copy} setCopied={setCopy} password={password}/>
             
             
-            <Box sx={{ width: 300 }}>
-                <SliderLength
-                    setLength={setPassLength}
-                />
-                <p>{passLength}</p>
-            </Box>
+                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <Typography variant="h5">Length: {passLength}</Typography>
+                    <SliderLength
+                        setLength={setPassLength}
+                    />
+                </Box>
 
+                <FormGroup>
+                    <ChackBox state={includeUppercase} toggle={setIncludeUppercase} lable={"Uppercase"}/>
+                    <ChackBox state={includeLowercase} toggle={setIncludeLowercase} lable={"Lowercase"}/>
+                    <ChackBox state={includeNumber} toggle={setIncludeNumber} lable={"Number"}/>
+                    <ChackBox state={includeSymbol} toggle={setIncludeSymbol} lable={"Symbol"}/>
+                </FormGroup>
+            
+                <StrengthBars strength={strength}/>
 
-
-            
-            <FormGroup>
-                <ChackBox state={includeUppercase} toggle={setIncludeUppercase} lable={"Uppercase"}/>
-                <ChackBox state={includeLowercase} toggle={setIncludeLowercase} lable={"Lowercase"}/>
-                <ChackBox state={includeNumber} toggle={setIncludeNumber} lable={"Number"}/>
-                <ChackBox state={includeSymbol} toggle={setIncludeSymbol} lable={"Symbol"}/>
-            </FormGroup>
-            
-            <StrengthBars strength={strength}/>
-            
-            <Button 
-                variant="contained" 
-                disabled={(!includeUppercase && !includeLowercase && !includeNumber && !includeSymbol) || passLength < 4}
-                onClick={() => {
-                    generatePassword(
-                        passLength,
-                        includeUppercase,
-                        includeLowercase,
-                        includeNumber,
-                        includeSymbol,
-                        setPassword,
-                        setStrength,
-                        setCopy
-                    )
-                }}
-            >
-                Generate
-            </Button>
-            
-        </>
+                <Button 
+                    variant="contained" 
+                    disabled={(!includeUppercase && !includeLowercase && !includeNumber && !includeSymbol) || passLength < 4}
+                    onClick={() => {
+                        generatePassword(
+                            passLength,
+                            includeUppercase,
+                            includeLowercase,
+                            includeNumber,
+                            includeSymbol,
+                            setPassword,
+                            setStrength,
+                            setCopy
+                        )
+                    }}
+                >
+                    Generate
+                </Button>
+            </Container>
+        </MainWrapper>
     )
 }
 
