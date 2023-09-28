@@ -1,3 +1,5 @@
+import { Margin } from '@mui/icons-material'
+import { Box } from '@mui/material'
 import React from 'react'
 
 type StrengthRatingProps = {
@@ -24,15 +26,15 @@ const StrengthBars: React.FC<StrengthRatingProps> = ({strength}) => {
             break;
     }
 
-    const bars = (colors: string[]): React.ReactNode[] => {
+    const bars = (colors: string[]): React.ReactNode => {
         return colors.map((color: string, index) => {
-            return <div key={index} style={{width: "30px", height: "30px", border: "2px solid black", backgroundColor: `${color}`}}></div>
+            return <div key={index} style={{width: "30px", height: "30px", borderRadius: "3px", backgroundColor: `${color}`}}></div>
         })
     }
     return (
-        <div>
+        <Box sx={{display: "flex", gap: "2px"}}>
             {bars(colors)}
-        </div>
+        </Box>
     )
 }
 

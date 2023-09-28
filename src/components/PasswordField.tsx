@@ -25,7 +25,6 @@ const PasswordField: React.FC<CopyButtonProps> = ({copied, setCopied, password})
 
     return ( 
         <FormControl sx={{ width: '100%' }} variant="outlined">
-          
             <OutlinedInput
                 id="outlined-adornment-password"
                 readOnly
@@ -43,7 +42,6 @@ const PasswordField: React.FC<CopyButtonProps> = ({copied, setCopied, password})
                     </InputAdornment>
                 }
             />
-
         </FormControl>
     )
 }

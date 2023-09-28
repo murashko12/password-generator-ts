@@ -48,9 +48,13 @@ function App() {
                     <ChackBox state={includeSymbol} toggle={setIncludeSymbol} lable={"Symbol"}/>
                 </FormGroup>
             
-                <StrengthBars strength={strength}/>
+                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <Typography variant="h5">Strength: {strength}</Typography>
+                    <StrengthBars strength={strength}/>
+                </Box>
 
                 <Button 
+                    
                     variant="contained" 
                     disabled={(!includeUppercase && !includeLowercase && !includeNumber && !includeSymbol) || passLength < 4}
                     onClick={() => {
